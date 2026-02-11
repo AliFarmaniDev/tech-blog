@@ -11,70 +11,52 @@
 
 import 'package:flutter/widgets.dart';
 
-class $LibGen {
-  const $LibGen();
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
 
-  /// Directory path: lib/assets
-  $LibAssetsGen get assets => const $LibAssetsGen();
-}
-
-class $LibAssetsGen {
-  const $LibAssetsGen();
-
-  /// Directory path: lib/assets/icons
-  $LibAssetsIconsGen get icons => const $LibAssetsIconsGen();
-
-  /// Directory path: lib/assets/images
-  $LibAssetsImagesGen get images => const $LibAssetsImagesGen();
-}
-
-class $LibAssetsIconsGen {
-  const $LibAssetsIconsGen();
-
-  /// File path: lib/assets/icons/audiofile.png
+  /// File path: assets/icons/audiofile.png
   AssetGenImage get audiofile =>
-      const AssetGenImage('lib/assets/icons/audiofile.png');
+      const AssetGenImage('assets/icons/audiofile.png');
 
-  /// File path: lib/assets/icons/blue_pen.png
-  AssetGenImage get bluePen =>
-      const AssetGenImage('lib/assets/icons/blue_pen.png');
+  /// File path: assets/icons/blue_pen.png
+  AssetGenImage get bluePen => const AssetGenImage('assets/icons/blue_pen.png');
 
-  /// File path: lib/assets/icons/down_cat_arrow.png
+  /// File path: assets/icons/down_cat_arrow.png
   AssetGenImage get downCatArrow =>
-      const AssetGenImage('lib/assets/icons/down_cat_arrow.png');
+      const AssetGenImage('assets/icons/down_cat_arrow.png');
 
-  /// File path: lib/assets/icons/hashtagicon.png
+  /// File path: assets/icons/hashtagicon.png
   AssetGenImage get hashtagicon =>
-      const AssetGenImage('lib/assets/icons/hashtagicon.png');
+      const AssetGenImage('assets/icons/hashtagicon.png');
 
-  /// File path: lib/assets/icons/home.png
-  AssetGenImage get home => const AssetGenImage('lib/assets/icons/home.png');
+  /// File path: assets/icons/home.png
+  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
 
-  /// File path: lib/assets/icons/microphon.png
+  /// File path: assets/icons/microphon.png
   AssetGenImage get microphon =>
-      const AssetGenImage('lib/assets/icons/microphon.png');
+      const AssetGenImage('assets/icons/microphon.png');
 
-  /// File path: lib/assets/icons/user.png
-  AssetGenImage get user => const AssetGenImage('lib/assets/icons/user.png');
+  /// File path: assets/icons/user.png
+  AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
 
-  /// File path: lib/assets/icons/write.png
-  AssetGenImage get write => const AssetGenImage('lib/assets/icons/write.png');
+  /// File path: assets/icons/write.png
+  AssetGenImage get write => const AssetGenImage('assets/icons/write.png');
 
-  /// File path: lib/assets/icons/write_article.png
+  /// File path: assets/icons/write_article.png
   AssetGenImage get writeArticle =>
-      const AssetGenImage('lib/assets/icons/write_article.png');
+      const AssetGenImage('assets/icons/write_article.png');
 
-  /// File path: lib/assets/icons/write_article_icon.png
+  /// File path: assets/icons/write_article_icon.png
   AssetGenImage get writeArticleIcon =>
-      const AssetGenImage('lib/assets/icons/write_article_icon.png');
+      const AssetGenImage('assets/icons/write_article_icon.png');
 
-  /// File path: lib/assets/icons/write_microphone.png
+  /// File path: assets/icons/write_microphone.png
   AssetGenImage get writeMicrophone =>
-      const AssetGenImage('lib/assets/icons/write_microphone.png');
+      const AssetGenImage('assets/icons/write_microphone.png');
 
-  /// File path: lib/assets/icons/write_podcast_icon.png
+  /// File path: assets/icons/write_podcast_icon.png
   AssetGenImage get writePodcastIcon =>
-      const AssetGenImage('lib/assets/icons/write_podcast_icon.png');
+      const AssetGenImage('assets/icons/write_podcast_icon.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -93,30 +75,30 @@ class $LibAssetsIconsGen {
   ];
 }
 
-class $LibAssetsImagesGen {
-  const $LibAssetsImagesGen();
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
 
-  /// File path: lib/assets/images/empty_state.png
+  /// File path: assets/images/empty_state.png
   AssetGenImage get emptyState =>
-      const AssetGenImage('lib/assets/images/empty_state.png');
+      const AssetGenImage('assets/images/empty_state.png');
 
-  /// File path: lib/assets/images/logo.png
-  AssetGenImage get logo => const AssetGenImage('lib/assets/images/logo.png');
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
-  /// File path: lib/assets/images/poster_test.png
+  /// File path: assets/images/poster_test.png
   AssetGenImage get posterTest =>
-      const AssetGenImage('lib/assets/images/poster_test.png');
+      const AssetGenImage('assets/images/poster_test.png');
 
-  /// File path: lib/assets/images/profileAvatar.png
+  /// File path: assets/images/profileAvatar.png
   AssetGenImage get profileAvatar =>
-      const AssetGenImage('lib/assets/images/profileAvatar.png');
+      const AssetGenImage('assets/images/profileAvatar.png');
 
-  /// File path: lib/assets/images/single_place_holder.jpg
+  /// File path: assets/images/single_place_holder.jpg
   AssetGenImage get singlePlaceHolder =>
-      const AssetGenImage('lib/assets/images/single_place_holder.jpg');
+      const AssetGenImage('assets/images/single_place_holder.jpg');
 
-  /// File path: lib/assets/images/tcbot.svg
-  String get tcbot => 'lib/assets/images/tcbot.svg';
+  /// File path: assets/images/tcbot.svg
+  String get tcbot => 'assets/images/tcbot.svg';
 
   /// List of all assets
   List<dynamic> get values => [
@@ -132,7 +114,8 @@ class $LibAssetsImagesGen {
 class Assets {
   const Assets._();
 
-  static const $LibGen lib = $LibGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {
