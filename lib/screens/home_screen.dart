@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
+import 'package:tech_blog/models/faje_data.dart';
 import 'package:tech_blog/res/colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    double bodyMargin = size.width / 10;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -60,27 +62,100 @@ class HomeScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text("ملیکا عزیزی - سه روز پیش",style: TextStyle(
-                              color: SolidColors.posterTitle,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400
-                            ),),
-                            Text("253 Like", style: TextStyle(
-                              color: SolidColors.posterTitle,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400
-                            ),),
+                            Text(
+                              homePagePosterMap["writer"] +
+                                  " - " +
+                                  homePagePosterMap["date"],
+                              style: TextStyle(
+                                color: SolidColors.posterTitle,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  homePagePosterMap["like"],
+                                  style: TextStyle(
+                                    color: SolidColors.posterTitle,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Icon(
+                                  Icons.remove_red_eye,
+                                  color: SolidColors.posterSubTitle,
+                                  size: 16,
+                                ),
+                              ],
+                            ),
                           ],
                         ),
-                        Text("دوازده قدم برنامه نویسی یک دوره", style: TextStyle(
-                          color: SolidColors.posterSubTitle,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
-                        ),)
+                        Text(
+                          "دوازده قدم برنامه نویسی یک دوره",
+                          style: TextStyle(
+                            color: SolidColors.posterSubTitle,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                // tag lists
+                height: 60,
+                child: ListView.builder(
+                  itemCount: tagsList.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    // create list builder
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        0,
+                        8,
+                        index == 0 ? bodyMargin : 15,
+                        8,
+                      ),
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          gradient: LinearGradient(
+                            colors: GradientColors.tags,
+                            begin: Alignment.centerRight,
+                            end: Alignment.centerLeft,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsGeometry.fromLTRB(16, 8, 8, 8),
+                          child: Row(
+                            children: [
+                              ImageIcon(
+                                Assets.icons.hashtagicon.provider(),
+                                color: Colors.white,
+                                size: 14,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                tagsList[index].title,
+                                style: TextStyle(
+                                  color: SolidColors.hashTag,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
