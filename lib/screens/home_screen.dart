@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/models/faje_data.dart';
 import 'package:tech_blog/res/colors.dart';
+import 'package:tech_blog/widgets/show_posts.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -157,6 +158,8 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
+              const SizedBox(height: 32,),
+              ShowPosts(),
             ],
           ),
         ),
