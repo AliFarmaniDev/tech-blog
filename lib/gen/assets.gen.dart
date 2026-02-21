@@ -85,6 +85,26 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/podcast_1.png
+  AssetGenImage get podcast1 =>
+      const AssetGenImage('assets/images/podcast_1.png');
+
+  /// File path: assets/images/podcast_2.png
+  AssetGenImage get podcast2 =>
+      const AssetGenImage('assets/images/podcast_2.png');
+
+  /// File path: assets/images/podcast_3.png
+  AssetGenImage get podcast3 =>
+      const AssetGenImage('assets/images/podcast_3.png');
+
+  /// File path: assets/images/podcast_4.png
+  AssetGenImage get podcast4 =>
+      const AssetGenImage('assets/images/podcast_4.png');
+
+  /// File path: assets/images/podcast_5.png
+  AssetGenImage get podcast5 =>
+      const AssetGenImage('assets/images/podcast_5.png');
+
   /// File path: assets/images/poster_test.png
   AssetGenImage get posterTest =>
       const AssetGenImage('assets/images/poster_test.png');
@@ -104,6 +124,11 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
     emptyState,
     logo,
+    podcast1,
+    podcast2,
+    podcast3,
+    podcast4,
+    podcast5,
     posterTest,
     profileAvatar,
     singlePlaceHolder,

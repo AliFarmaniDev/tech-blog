@@ -25,3 +25,17 @@ class BlogModel {
     required this.views,
   });
 }
+
+// create a class for hatest podcats
+class HotestPodcasts {
+  int id;
+  String podcastTitle;
+  String creator;
+  String podcastImage;
+  HotestPodcasts({
+    required this.id,
+    required this.podcastTitle,
+    required this.creator,
+    required this.podcastImage,
+  });
+}
