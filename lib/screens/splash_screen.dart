@@ -26,7 +26,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: impliment build
     return SafeArea(
       child: Scaffold(
         body: Center(

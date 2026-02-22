@@ -14,22 +14,26 @@ class HomeScreen extends StatelessWidget {
     double bodyMargin = size.width / 10;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: SolidColors.scaffoldBg,
+          elevation: 0,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.menu, color: Colors.black),
+              Image(
+                image: Assets.images.logo.provider(),
+                height: size.height / 13.6,
+              ),
+              Icon(Icons.search, color: Colors.black),
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsetsGeometry.fromLTRB(0, 16, 0, 0),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Icon(Icons.menu),
-                    Image(
-                      image: Assets.images.logo.provider(),
-                      height: size.height / 13.6,
-                    ),
-                    Icon(Icons.search),
-                  ],
-                ),
                 const SizedBox(height: 8),
                 Stack(
                   children: [
@@ -160,11 +164,49 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: 32,),
+                const SizedBox(height: 32),
                 ShowPosts(),
-                const SizedBox(height: 32,),
+                const SizedBox(height: 32),
                 //ShowPodcasts()
               ],
+            ),
+          ),
+        ),
+        // create bottomnavbar
+        bottomNavigationBar: Container(
+          height: size.height / 10,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: GradientColors.bottomNavBackground,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(right: 8, left: 8),
+            child: Container(
+              height: size.height / 8,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: GradientColors.bottomNav),
+                borderRadius: BorderRadius.all(Radius.circular(18)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: ImageIcon(Assets.icons.home.provider()),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: ImageIcon(Assets.icons.write.provider()),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: ImageIcon(Assets.icons.user.provider()),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
