@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
-import 'package:tech_blog/models/faje_data.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/screens/home_screen.dart';
-import 'package:tech_blog/widgets/show_podcasts.dart';
-import 'package:tech_blog/widgets/show_posts.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -30,7 +27,11 @@ class MainScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: HomeScreen(size: size, bodyMargin: bodyMargin),
+        body: Center(
+          child: Positioned.fill(
+            child: HomeScreen(size: size, bodyMargin: bodyMargin),
+          ),
+        ),
         // create bottomnavbar
         bottomNavigationBar: Container(
           height: size.height / 10,
@@ -73,4 +74,3 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
-
