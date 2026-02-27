@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
-import 'package:tech_blog/screens/home_screen.dart';
+import 'package:tech_blog/screens/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(
         // ignore: use_build_context_synchronously
         context,
-      ).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
+      ).pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
     });
     super.initState();
   }
