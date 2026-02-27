@@ -2,14 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/screens/home_screen.dart';
+import 'package:tech_blog/screens/profile_screen.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  // create page index
+  var selectePagedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     double bodyMargin = size.width / 10;
+    // create pages lists
+    List<Widget> techMainScreenPage = [
+      HomeScreen(size: size, bodyMargin: bodyMargin),
+      ProfileScreen(size: size, bodyMargin: bodyMargin),
+    ];
+    // create function for change pages
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -29,7 +45,8 @@ class MainScreen extends StatelessWidget {
         ),
         body: Center(
           child: Positioned.fill(
-            child: HomeScreen(size: size, bodyMargin: bodyMargin),
+            //set pages
+            child: techMainScreenPage[selectePagedIndex],
           ),
         ),
         // create bottomnavbar
@@ -43,7 +60,7 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin,bottom: 10),
             child: Container(
               height: size.height / 8,
               decoration: BoxDecoration(
@@ -54,7 +71,11 @@ class MainScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectePagedIndex = 0;
+                      });
+                    },
                     icon: ImageIcon(Assets.icons.home.provider()),
                   ),
                   IconButton(
@@ -62,7 +83,11 @@ class MainScreen extends StatelessWidget {
                     icon: ImageIcon(Assets.icons.write.provider()),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        selectePagedIndex = 1;
+                      });
+                    },
                     icon: ImageIcon(Assets.icons.user.provider()),
                   ),
                 ],
