@@ -3,6 +3,7 @@ import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/screens/home_screen.dart';
 import 'package:tech_blog/screens/profile_screen.dart';
+import 'package:tech_blog/screens/register_intro_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,12 +20,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     double bodyMargin = size.width / 10;
-    // create pages lists
-    List<Widget> techMainScreenPage = [
-      HomeScreen(size: size, bodyMargin: bodyMargin),
-      ProfileScreen(size: size, bodyMargin: bodyMargin),
-    ];
-    // create function for change pages
 
     return SafeArea(
       child: Scaffold(
@@ -46,7 +41,15 @@ class _MainScreenState extends State<MainScreen> {
         body: Center(
           child: Positioned.fill(
             //set pages
-            child: techMainScreenPage[selectePagedIndex],
+            child: IndexedStack(
+              // use indexedstack for change pages
+              index: selectePagedIndex,
+              children: [
+                HomeScreen(size: size, bodyMargin: bodyMargin),
+                ProfileScreen(size: size, bodyMargin: bodyMargin),
+                RegisterIntroScreen(),
+              ],
+            ),
           ),
         ),
         // create bottomnavbar
@@ -60,7 +63,11 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin,bottom: 10),
+            padding: EdgeInsets.only(
+              right: bodyMargin,
+              left: bodyMargin,
+              bottom: 10,
+            ),
             child: Container(
               height: size.height / 8,
               decoration: BoxDecoration(
@@ -76,11 +83,21 @@ class _MainScreenState extends State<MainScreen> {
                         selectePagedIndex = 0;
                       });
                     },
-                    icon: ImageIcon(Assets.icons.home.provider()),
+                    icon: ImageIcon(
+                      Assets.icons.home.provider(),
+                      color: SolidColors.hashTag,
+                    ),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: ImageIcon(Assets.icons.write.provider()),
+                    onPressed: () {
+                      setState(() {
+                        selectePagedIndex = 2;
+                      });
+                    },
+                    icon: ImageIcon(
+                      Assets.icons.write.provider(),
+                      color: SolidColors.hashTag,
+                    ),
                   ),
                   IconButton(
                     onPressed: () {
@@ -88,7 +105,10 @@ class _MainScreenState extends State<MainScreen> {
                         selectePagedIndex = 1;
                       });
                     },
-                    icon: ImageIcon(Assets.icons.user.provider()),
+                    icon: ImageIcon(
+                      Assets.icons.user.provider(),
+                      color: SolidColors.hashTag,
+                    ),
                   ),
                 ],
               ),
