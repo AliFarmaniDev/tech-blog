@@ -32,6 +32,16 @@ class MyApp extends StatelessWidget {
         Locale('fa', ''), // farsi
       ],
       title: "tech blog",
+      theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          // button style
+          style: ButtonStyle(
+            textStyle: WidgetStateProperty.resolveWith((state){
+              
+            })
+          )
+        )
+      ),
       home: SplashScreen(),
     );
   }

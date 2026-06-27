@@ -9,7 +9,7 @@ class RegisterIntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    //var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -32,17 +32,23 @@ class RegisterIntroScreen extends StatelessWidget {
                 padding: EdgeInsets.only(top: 32),
                 child: ElevatedButton(
                   onPressed: () {},
-                  // style: ButtonStyle(
-                  //   backgroundColor: 
-                  // ),
-                  child: Text(
-                    MyStrings.letsGo,
-                    style: TextStyle(
-                      color: SolidColors.primaryColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  style: ButtonStyle(
+                    textStyle: WidgetStateProperty.resolveWith<TextStyle?>((
+                      Set<WidgetState> states,
+                    ) {
+                      if (states.contains(WidgetState.pressed)) {
+                        return TextStyle(fontSize: 20, color: Colors.white);
+                      }
+                      return TextStyle(fontSize: 25, color: Colors.white);
+                    }),
+                    backgroundColor: WidgetStateProperty.resolveWith((state) {
+                      if (state.contains(WidgetState.pressed)) {
+                        return SolidColors.seeMore;
+                      }
+                      return SolidColors.primaryColor;
+                    }),
                   ),
+                  child: Text(MyStrings.letsGo),
                 ),
               ),
             ],
