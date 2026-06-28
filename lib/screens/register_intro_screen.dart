@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/res/string.dart';
+import 'package:validators/validators.dart';
 
 class RegisterIntroScreen extends StatelessWidget {
   const RegisterIntroScreen({super.key});
@@ -32,60 +33,7 @@ class RegisterIntroScreen extends StatelessWidget {
                 padding: EdgeInsets.only(top: 32),
                 child: ElevatedButton(
                   onPressed: () {
-                    showModalBottomSheet(
-                      // create a buttmSheet
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          // to avoid the keyboard from covering the bottom sheet
-                          padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom,
-                          ),
-                          child: Container(
-                            height: size.height / 2,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                topRight: Radius.circular(30),
-                              ),
-                            ),
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    MyStrings.insertYourEmail,
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(24),
-                                    child: TextField(
-                                      textAlign: TextAlign.center,
-                                      decoration: InputDecoration(
-                                        hintText: "sample@gmail.com",
-                                        hintStyle: TextStyle(
-                                          color: SolidColors.dividerColor,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text("ادامه"),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    );
+                    _showEmailButtomSheet(context, size);
                   },
                   child: Text(MyStrings.letsGo),
                 ),
@@ -94,6 +42,137 @@ class RegisterIntroScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<dynamic> _showEmailButtomSheet(BuildContext context, Size size) {
+    // validate email using regex
+    // RegExp isEmail = RegExp(
+    //   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    // );
+    return showModalBottomSheet(
+      // create a buttmSheet
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return Padding(
+          // to avoid the keyboard from covering the bottom sheet
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Container(
+            height: size.height / 2,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    MyStrings.insertYourEmail,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: TextField(
+                      //validate email
+                      onChanged: (value) {
+                        // Add email validation logic here
+                        // print(value + " is valid email: ${isEmail.hasMatch(value)}");
+                        // valdate email usung validators
+                        isEmail(value);
+                        print(value + "is email: " + isEmail(value).toString());
+                      },
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        hintText: "sample@gmail.com",
+                        hintStyle: TextStyle(color: SolidColors.dividerColor),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // pop new widget
+                      Navigator.pop(context);
+                      _activateCodelButtomSheet(context, size);
+                    },
+                    child: Text("ادامه"),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<dynamic> _activateCodelButtomSheet(BuildContext context, Size size) {
+    return showModalBottomSheet(
+      // create a buttmSheet
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return Padding(
+          // to avoid the keyboard from covering the bottom sheet
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Container(
+            height: size.height / 2,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    MyStrings.activateCode,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: TextField(
+                      //validate email
+                      onChanged: (value) {
+                        // Add email validation logic here
+                        // print(value + " is valid email: ${isEmail.hasMatch(value)}");
+                        // valdate email usung validators
+                        isEmail(value);
+                        print(value + "is email: " + isEmail(value).toString());
+                      },
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        hintText: "******",
+                        hintStyle: TextStyle(color: SolidColors.dividerColor),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(onPressed: () {}, child: Text("ادامه")),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
