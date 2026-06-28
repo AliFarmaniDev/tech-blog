@@ -9,7 +9,7 @@ class RegisterIntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //var size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -31,23 +31,62 @@ class RegisterIntroScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 32),
                 child: ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    textStyle: WidgetStateProperty.resolveWith<TextStyle?>((
-                      Set<WidgetState> states,
-                    ) {
-                      if (states.contains(WidgetState.pressed)) {
-                        return TextStyle(fontSize: 20, color: Colors.white);
-                      }
-                      return TextStyle(fontSize: 25, color: Colors.white);
-                    }),
-                    backgroundColor: WidgetStateProperty.resolveWith((state) {
-                      if (state.contains(WidgetState.pressed)) {
-                        return SolidColors.seeMore;
-                      }
-                      return SolidColors.primaryColor;
-                    }),
-                  ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      // create a buttmSheet
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          // to avoid the keyboard from covering the bottom sheet
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: Container(
+                            height: size.height / 2,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(30),
+                              ),
+                            ),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    MyStrings.insertYourEmail,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(24),
+                                    child: TextField(
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                        hintText: "sample@gmail.com",
+                                        hintStyle: TextStyle(
+                                          color: SolidColors.dividerColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text("ادامه"),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                   child: Text(MyStrings.letsGo),
                 ),
               ),
