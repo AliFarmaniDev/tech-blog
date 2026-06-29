@@ -114,6 +114,7 @@ class _MyCatState extends State<MyCat> {
                       onTap: (() {
                         setState(() {
                           selectedTags.removeAt(index);
+
                         });
                       }),
                       child: const Icon(
@@ -154,7 +155,13 @@ class _MyCatState extends State<MyCat> {
               // add tag to selected tags list
               onTap: (() {
                 setState(() {
-                  selectedTags.add(tagsList[index]);
+                  if(!selectedTags.contains(tagsList[index])){
+                    selectedTags.add(tagsList[index]);
+                  } else {
+                    // ignore: avoid_print
+                    print("item exist");
+                  }
+                  
                 });
               }),
               child: Container(
