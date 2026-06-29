@@ -19,6 +19,8 @@ List<HashTags> tagsList = [
   HashTags(title: "آموزش"),
 ];
 
+List<HashTags> selectedTags = [];
+
 // create fack date for posts list
 List<BlogModel> blogList = [
   BlogModel(

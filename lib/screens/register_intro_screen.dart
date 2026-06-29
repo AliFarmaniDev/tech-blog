@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/res/string.dart';
+import 'package:tech_blog/screens/my_cat.dart';
 import 'package:validators/validators.dart';
 
 class RegisterIntroScreen extends StatelessWidget {
@@ -166,7 +167,15 @@ class RegisterIntroScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ElevatedButton(onPressed: () {}, child: Text("ادامه")),
+                  ElevatedButton(
+                    onPressed: () {
+                      // navigate to MyCat screen
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const MyCat()),
+                      );
+                    },
+                    child: Text("ادامه"),
+                  ),
                 ],
               ),
             ),
