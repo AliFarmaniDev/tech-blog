@@ -23,13 +23,72 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        // create drawer
+        drawer: Drawer(
+          backgroundColor: SolidColors.scaffoldBg,
+          child: Padding(
+            padding:  EdgeInsets.only(right:bodyMargin ),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  child: Center(
+                    child: Image.asset(Assets.images.logo.path, scale: 3),
+                  ),
+                ),
+                ListTile(
+                  title: const Text(
+                    "پروفایل کاربری",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const Divider(color: SolidColors.dividerColor),
+            
+                ListTile(
+                  title: const Text(
+                    "درباره تک بلاگ",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const Divider(color: SolidColors.dividerColor),
+            
+                ListTile(
+                  title: const Text(
+                    "اشتراک گذاری تک بلاگ",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const Divider(color: SolidColors.dividerColor),
+            
+                ListTile(
+                  title: const Text(
+                    "تک بلاگ در گیت هاب",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const Divider(color: SolidColors.dividerColor),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: SolidColors.scaffoldBg,
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Icon(Icons.menu, color: Colors.black),
+              //Icon(Icons.menu, color: Colors.black),
               Image(
                 image: Assets.images.logo.provider(),
                 height: size.height / 13.6,
@@ -66,7 +125,7 @@ class _MainScreenState extends State<MainScreen> {
             padding: EdgeInsets.only(
               right: bodyMargin,
               left: bodyMargin,
-              bottom: 10,
+              bottom: 12,
             ),
             child: Container(
               height: size.height / 8,
