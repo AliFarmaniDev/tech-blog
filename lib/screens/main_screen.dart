@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/screens/home_screen.dart';
 import 'package:tech_blog/screens/profile_screen.dart';
 import 'package:tech_blog/screens/register_intro_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class MainScreen extends StatelessWidget {
+  // create page index - moved to StatefulWidget for proper state management
+  final RxInt selectedPageIndex = 0.obs;
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  // create page index
-  var selectePagedIndex = 0;
+  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
         drawer: Drawer(
           backgroundColor: SolidColors.scaffoldBg,
           child: Padding(
-            padding:  EdgeInsets.only(right:bodyMargin ),
+            padding: EdgeInsets.only(right: bodyMargin),
             child: ListView(
               children: [
                 DrawerHeader(
@@ -43,9 +39,13 @@ class _MainScreenState extends State<MainScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  onTap: () {
+                    selectedPageIndex.value = 1;
+                    Navigator.pop(context); // Close drawer
+                  },
                 ),
                 const Divider(color: SolidColors.dividerColor),
-            
+
                 ListTile(
                   title: const Text(
                     "درباره تک بلاگ",
@@ -54,9 +54,13 @@ class _MainScreenState extends State<MainScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  onTap: () {
+                    // Navigate to about page
+                    Navigator.pop(context);
+                  },
                 ),
                 const Divider(color: SolidColors.dividerColor),
-            
+
                 ListTile(
                   title: const Text(
                     "اشتراک گذاری تک بلاگ",
@@ -65,9 +69,13 @@ class _MainScreenState extends State<MainScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  onTap: () {
+                    // Share functionality
+                    Navigator.pop(context);
+                  },
                 ),
                 const Divider(color: SolidColors.dividerColor),
-            
+
                 ListTile(
                   title: const Text(
                     "تک بلاگ در گیت هاب",
@@ -76,6 +84,10 @@ class _MainScreenState extends State<MainScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  onTap: () {
+                    // Open GitHub link
+                    Navigator.pop(context);
+                  },
                 ),
                 const Divider(color: SolidColors.dividerColor),
               ],
@@ -88,21 +100,24 @@ class _MainScreenState extends State<MainScreen> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              //Icon(Icons.menu, color: Colors.black),
+              // Removed commented out Icon
               Image(
                 image: Assets.images.logo.provider(),
                 height: size.height / 13.6,
               ),
-              Icon(Icons.search, color: Colors.black),
+              IconButton(
+                icon: const Icon(Icons.search, color: Colors.black),
+                onPressed: () {
+                  // Add search functionality
+                },
+              ),
             ],
           ),
         ),
         body: Center(
-          child: Positioned.fill(
-            //set pages
-            child: IndexedStack(
-              // use indexedstack for change pages
-              index: selectePagedIndex,
+          child: Obx(
+            () => IndexedStack(
+              index: selectedPageIndex.value,
               children: [
                 HomeScreen(size: size, bodyMargin: bodyMargin),
                 ProfileScreen(size: size, bodyMargin: bodyMargin),
@@ -131,16 +146,14 @@ class _MainScreenState extends State<MainScreen> {
               height: size.height / 8,
               decoration: BoxDecoration(
                 gradient: LinearGradient(colors: GradientColors.bottomNav),
-                borderRadius: BorderRadius.all(Radius.circular(18)),
+                borderRadius: const BorderRadius.all(Radius.circular(18)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
                     onPressed: () {
-                      setState(() {
-                        selectePagedIndex = 0;
-                      });
+                      selectedPageIndex.value = 0;
                     },
                     icon: ImageIcon(
                       Assets.icons.home.provider(),
@@ -149,9 +162,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      setState(() {
-                        selectePagedIndex = 2;
-                      });
+                      selectedPageIndex.value = 2;
                     },
                     icon: ImageIcon(
                       Assets.icons.write.provider(),
@@ -160,9 +171,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      setState(() {
-                        selectePagedIndex = 1;
-                      });
+                      selectedPageIndex.value = 1;
                     },
                     icon: ImageIcon(
                       Assets.icons.user.provider(),
