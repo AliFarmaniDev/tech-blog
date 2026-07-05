@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tech_blog/components/my_components.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
+import 'package:tech_blog/res/string.dart';
 import 'package:tech_blog/screens/home_screen.dart';
 import 'package:tech_blog/screens/profile_screen.dart';
 import 'package:tech_blog/screens/register_intro_screen.dart';
@@ -69,9 +72,9 @@ class MainScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onTap: () {
+                  onTap: () async {
                     // Share functionality
-                    Navigator.pop(context);
+                    await Share.share(MyStrings.shareText);
                   },
                 ),
                 const Divider(color: SolidColors.dividerColor),
@@ -86,7 +89,7 @@ class MainScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     // Open GitHub link
-                    Navigator.pop(context);
+                    myLaunchUrl(MyStrings.techBlogGithubUrl);
                   },
                 ),
                 const Divider(color: SolidColors.dividerColor),

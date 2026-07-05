@@ -91,7 +91,7 @@ class RegisterIntroScreen extends StatelessWidget {
                         // print(value + " is valid email: ${isEmail.hasMatch(value)}");
                         // valdate email usung validators
                         isEmail(value);
-                        print(value + "is email: " + isEmail(value).toString());
+                        print("${value}is email: ${isEmail(value)}");
                       },
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
@@ -158,7 +158,7 @@ class RegisterIntroScreen extends StatelessWidget {
                         // print(value + " is valid email: ${isEmail.hasMatch(value)}");
                         // valdate email usung validators
                         isEmail(value);
-                        print(value + "is email: " + isEmail(value).toString());
+                        print("${value}is email: ${isEmail(value)}");
                       },
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
