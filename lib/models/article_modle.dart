@@ -2,24 +2,37 @@ class ArticleModle {
   String? id;
   String? title;
   String? image;
-  String? cat_id;
-  String? cat_name;
+  String? catId;
+  String? catName;
   String? author;
-  String? viws;
+  String? views;
   String? status;
-  String? created_at;
+  String? createdAt;
 
 
   ArticleModle({
     required this.id,
     required this.title,
     required this.image,
-    required this.cat_id,
-    required this.cat_name,
+    required this.catId,
+    required this.catName,
     required this.author,
-    required this.viws,
+    required this.views,
     required this.status,
-    required this.created_at,
+    required this.createdAt,
   });
 
+  // get data and convert it to model
+  ArticleModle.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    image = json['image'];
+    catId = json['cat_id'];
+    catName = json['cat_name'];
+    author = json['author'];
+    views = json['views'];
+    status = json['status'];
+    createdAt = json['created_at'];
+  }
+  
 }
