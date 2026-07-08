@@ -1,4 +1,5 @@
 class PodcastModle {
+  // define variables
   String? id;
   String? title;
   String? poster;
@@ -7,6 +8,7 @@ class PodcastModle {
   String? createdAt;
 
   PodcastModle({
+    // constructor with required parameters
     required this.id,
     required this.title,
     required this.poster,
