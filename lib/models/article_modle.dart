@@ -1,4 +1,4 @@
-class ArticleModle {
+class ArticleModel {
   String? id;
   String? title;
   String? image;
@@ -10,7 +10,7 @@ class ArticleModle {
   String? createdAt;
 
 
-  ArticleModle({
+  ArticleModel({
     required this.id,
     required this.title,
     required this.image,
@@ -23,7 +23,7 @@ class ArticleModle {
   });
 
   // get data and convert it to model
-  ArticleModle.fromJson(Map<String, dynamic> json) {
+  ArticleModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     image = json['image'];

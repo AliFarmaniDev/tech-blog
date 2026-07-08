@@ -1,4 +1,4 @@
-class PodcastModle {
+class PodcastModel {
   // define variables
   String? id;
   String? title;
@@ -7,7 +7,7 @@ class PodcastModle {
   String? views;
   String? createdAt;
 
-  PodcastModle({
+  PodcastModel({
     // constructor with required parameters
     required this.id,
     required this.title,
@@ -19,7 +19,7 @@ class PodcastModle {
 
 
   // get data and convert it to model
-  PodcastModle.fromJson(Map<String, dynamic> json) {
+  PodcastModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     poster = json['poster'];
