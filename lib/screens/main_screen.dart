@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:tech_blog/components/api_constant.dart';
 import 'package:tech_blog/components/my_components.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
@@ -8,6 +9,7 @@ import 'package:tech_blog/res/string.dart';
 import 'package:tech_blog/screens/home_screen.dart';
 import 'package:tech_blog/screens/profile_screen.dart';
 import 'package:tech_blog/screens/register_intro_screen.dart';
+import 'package:tech_blog/services/dio_service.dart';
 
 class MainScreen extends StatelessWidget {
   // create page index - moved to StatefulWidget for proper state management
@@ -17,6 +19,9 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Fetch home items from API
+    DioService().getMethod(ApiConstant.getHomeItems);
+    // Get the size of the screen and calculate body margin
     var size = MediaQuery.of(context).size;
     double bodyMargin = size.width / 10;
 
