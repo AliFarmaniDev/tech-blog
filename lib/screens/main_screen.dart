@@ -19,8 +19,6 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Fetch home items from API
-    DioService().getMethod(ApiConstant.getHomeItems);
     // Get the size of the screen and calculate body margin
     var size = MediaQuery.of(context).size;
     double bodyMargin = size.width / 10;
