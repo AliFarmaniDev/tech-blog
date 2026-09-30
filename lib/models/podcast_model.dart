@@ -1,30 +1,32 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:tech_blog/components/api_constant.dart';
+
 class PodcastModel {
-  // define variables
   String? id;
   String? title;
   String? poster;
   String? publisher;
-  String? views;
+  String? view;
   String? createdAt;
-
   PodcastModel({
-    // constructor with required parameters
     required this.id,
     required this.title,
     required this.poster,
     required this.publisher,
-    required this.views,
+    required this.view,
     required this.createdAt,
   });
 
 
-  // get data and convert it to model
-  PodcastModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    poster = json['poster'];
-    publisher = json['publisher'];
-    views = json['views'];
-    createdAt = json['created_at'];
+  factory PodcastModel.fromJson(Map<String, dynamic> json) {
+    return PodcastModel(
+      id: json['id'] ?? '',
+      title: json['title'] ?? '',
+      poster: ApiConstant.hostDlUrl + (json['poster'] ?? ''),
+      publisher: json['publisher'] ?? '',
+      view: json['view'] ?? '',
+      createdAt: json['created_at'] ?? '',
+    );
+
   }
 }

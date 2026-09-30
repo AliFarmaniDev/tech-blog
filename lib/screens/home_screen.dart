@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/state_manager.dart';
-import 'package:tech_blog/controller/home_screen_controller.dart';
 import 'package:tech_blog/gen/assets.gen.dart';
 import 'package:tech_blog/res/colors.dart';
 import 'package:tech_blog/widgets/post_list.dart';
-//import 'package:tech_blog/widgets/show_podcasts.dart';
 import 'package:tech_blog/widgets/show_posts.dart';
+import 'package:tech_blog/widgets/show_podcasts.dart';
 import 'package:tech_blog/widgets/tags_lists.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key, required this.size, required this.bodyMargin});
   // get data from API and show it in the home screen
-  HomeScreenController homeScreenController = Get.put(HomeScreenController());
+  //HomeScreenController homeScreenController = Get.put(HomeScreenController());
   final Size size;
   final double bodyMargin;
 
@@ -57,7 +54,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 32),
             ShowPosts(),
             const SizedBox(height: 32),
-            //ShowPodcasts()
+            ShowPodcasts(),
+            const SizedBox(height: 32),
           ],
         ),
       ),

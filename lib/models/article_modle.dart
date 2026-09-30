@@ -7,32 +7,33 @@ class ArticleModel {
   String? catId;
   String? catName;
   String? author;
-  String? views;
+  String? view;
   String? status;
+  // String? isFavorite;
   String? createdAt;
 
   ArticleModel({
-    required this.id,
-    required this.title,
-    required this.image,
-    required this.catId,
-    required this.catName,
-    required this.author,
-    required this.views,
-    required this.status,
-    required this.createdAt,
+    this.id,
+    this.title,
+    this.image,
+    this.catId,
+    this.catName,
+    this.author,
+    this.view,
+    this.status,
+    // this.isFavorite,
+    this.createdAt,
   });
 
-  // get data and convert it to model
-  ArticleModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    image = ApiConstant.hostDlUrl + json['image'];
-    catId = json['cat_id'];
-    catName = json['cat_name'];
-    author = json['author'];
-    views = json['views'];
-    status = json['status'];
-    createdAt = json['created_at'];
+  ArticleModel.fromJson(Map<String, dynamic> element) {
+    id = element["id"];
+    title = element["title"];
+    image = ApiConstant.hostDlUrl + element["image"];
+    catId = element["cat_id"];
+    catName = element["cat_name"];
+    author = element["author"]??'ساسان صفری';
+    view = element["view"];
+    status = element["status"];
+    createdAt = element["created_at"];
   }
 }
